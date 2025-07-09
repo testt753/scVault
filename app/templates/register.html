@@ -1,0 +1,39 @@
+{% extends "_base.html" %}
+{% block title %}Inscription{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title text-center">Créer un compte</h3>
+    <form method="POST" action="{{ url_for('auth.register') }}">
+      {{ form.hidden_tag() }}
+
+      <div class="mb-3">
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+        {% if form.username.errors %}
+          <div class="text-danger small mt-1">
+            {% for error in form.username.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+        {% if form.password.errors %}
+          <div class="text-danger small mt-1">
+            {% for error in form.password.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {{ form.submit(class="btn btn-primary w-100") }}
+    </form>
+    <p class="text-center mt-3">Déjà un compte ? <a href="{{ url_for('auth.login') }}">Se connecter</a></p>
+  </div>
+</div>
+{% endblock %}

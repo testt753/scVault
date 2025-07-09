@@ -1,0 +1,11 @@
+Flask==2.2.3
+Flask-SQLAlchemy==3.0.3
+Flask-Login==0.6.2
+Flask-Bcrypt==1.0.1
+psycopg2-binary
+pyotp==2.8.0
+qrcode[pil]==7.4.2
+hvac==1.1.0
+gunicorn==20.1.0
+Flask-WTF==1.1.1
+Werkzeug==2.2.3 

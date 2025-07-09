@@ -1,0 +1,23 @@
+# Fichiers et dossiers Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+
+# Fichiers de base de données locaux (même si on ne l'utilise plus, c'est une bonne pratique)
+db.sqlite
+*.sqlite3
+
+# Fichiers de l'éditeur de code
+.vscode/
+.idea/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

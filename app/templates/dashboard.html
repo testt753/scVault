@@ -1,0 +1,52 @@
+{% extends "_base.html" %}
+{% block title %}Tableau de Bord{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <h4>Bienvenue, {{ name }} !</h4>
+  <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Déconnexion</a>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">Ajouter un nouveau mot de passe</h5>
+    <form method="POST" action="{{ url_for('auth.dashboard') }}">
+        {{ form.hidden_tag() }}
+      <div class="row g-2">
+        <div class="col-md">
+          <input type="text" name="site_name" class="form-control" placeholder="Nom du site" required>
+        </div>
+        <div class="col-md">
+          <input type="text" name="username" class="form-control" placeholder="Identifiant" required>
+        </div>
+        <div class="col-md">
+          <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+        </div>
+        <div class="col-md-auto">
+          <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h5 class="card-title">Vos mots de passe</h5>
+        {% if passwords %}
+        <ul class="list-group">
+            {% for entry in passwords %}
+            <li class="list-group-item">
+                <strong>{{ entry.site_name }}</strong> <br>
+                Identifiant: {{ entry.username }} <br>
+                <!-- ATTENTION: N'affichez jamais les mots de passe en clair comme ça. -->
+                <!-- C'est juste pour la démo. Idéalement, un bouton "copier" sans l'afficher. -->
+                Mot de passe: <span class="text-muted fst-italic">{{ entry.password }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Vous n'avez aucun mot de passe enregistré.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
