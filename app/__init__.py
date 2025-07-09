@@ -52,6 +52,9 @@ def create_app():
 
     from .routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    
+    from .commands import command_bp
+    app.cli.add_command(command_bp)
 
     with app.app_context():
         db.create_all()
